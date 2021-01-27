@@ -1,0 +1,716 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>What the Web and Android can learn from eachother</title>
+
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/night.css">
+
+    <link rel="stylesheet" href="lib/css/monokai.css">
+
+    <script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+
+      <style>
+        .hi { color: #e7ad52 }
+      </style>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+
+          <h1 style="line-height: 1em">
+          <small style="vertical-align: baseline">The</small> <span class=hi>Web</span><br>
+          <small style="vertical-align: baseline">and</small> <span class=hi>Android</span>
+          </h1>
+
+          <h4>and what they can learn from eachother.</h4>
+
+          <p style="text-align: right; margin-top: 7rem">
+            (according to <a href="https://twitter.com/aaronj1335">aaronj1335@</a>)<br>
+            Originally presented on the 24<sup>th</sup> of July, 2019<br>
+            <small>Press "s" for speaker notes</small>
+          </p>
+        </section>
+
+        <section>
+          <section>
+            <svg
+               xmlns:svg="http://www.w3.org/2000/svg"
+               xmlns="http://www.w3.org/2000/svg"
+               width="700"
+               height="500">
+              <g transform="translate(0,-552.36218)">
+                <g class="fragment">
+                  <path
+                     id="path2820"
+                     d="m 366.85161,288.47717 a 150.02747,150.02747 0 1 1 -300.054933,0 150.02747,150.02747 0 1 1 300.054933,0 z"
+                     transform="matrix(1.3242624,0,0,1.3242624,-46.203599,424.69104)"
+                     style="fill:none;stroke:#fff;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+                  <text transform="translate(75,790)" style="fill: white; font-family: 'Montserrat', Impact, sans-serif">
+                    <tspan x=0 dy=10>Android</tspan>
+                    <tspan x=0 dy=40>people</tspan>
+                  </text>
+                </g>
+
+                <g class="fragment">
+                  <path
+                     style="fill:none;stroke:#fff;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+                     transform="matrix(1.3242624,0,0,1.3242624,169.7964,424.69104)"
+                     d="m 366.85161,288.47717 a 150.02747,150.02747 0 1 1 -300.054933,0 150.02747,150.02747 0 1 1 300.054933,0 z"
+                     />
+                  <text transform="translate(475,770)" style="fill: white; font-family: 'Montserrat', Impact, sans-serif">
+                    <tspan x="-35" dy="10">Web</tspan>
+                    <tspan x="-30" dy="40">standards</tspan>
+                    <tspan x="-35" dy="40">people</tspan>
+                  </text>
+                </g>
+              </g>
+            </svg>
+
+            <aside class=notes>
+              <ul>
+                <li>Let's talk about the intended audience here.</li>
+                <li>Android people: sizable group</li>
+                <li>Web standards geeks: not so many -- "dozens!"</li>
+              </ul>
+            </aside>
+          </section>
+
+          <section data-background="img/dozens-of-us.gif"></section>
+
+          <section data-transition="none">
+            <h2>Who are you?</h2>
+
+            <svg
+               xmlns:svg="http://www.w3.org/2000/svg"
+               xmlns="http://www.w3.org/2000/svg"
+               width="700"
+               height="500">
+              <g transform="translate(0,-552.36218)">
+                <path
+                   id="path2820"
+                   d="m 366.85161,288.47717 a 150.02747,150.02747 0 1 1 -300.054933,0 150.02747,150.02747 0 1 1 300.054933,0 z"
+                   transform="matrix(1.3242624,0,0,1.3242624,-46.203599,424.69104)"
+                   style="fill:none;stroke:#fff;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+                <text transform="translate(75,790)" style="fill: white; font-family: 'Montserrat', Impact, sans-serif">
+                  <tspan x=0 dy=10>Android</tspan>
+                  <tspan x=0 dy=40>people</tspan>
+                </text>
+                <path
+                   style="fill:none;stroke:#fff;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+                   transform="matrix(1.3242624,0,0,1.3242624,169.7964,424.69104)"
+                   d="m 366.85161,288.47717 a 150.02747,150.02747 0 1 1 -300.054933,0 150.02747,150.02747 0 1 1 300.054933,0 z"
+                   />
+                <text transform="translate(475,770)" style="fill: white; font-family: 'Montserrat', Impact, sans-serif">
+                  <tspan x="-35" dy="10">Web</tspan>
+                  <tspan x="-30" dy="40">standards</tspan>
+                  <tspan x="-35" dy="40">people</tspan>
+                </text>
+                <text class="fragment" transform="translate(320,820)" style="fill: white; font-family: 'Montserrat', Impact, sans-serif">Me.</text>
+              </g>
+            </svg>
+
+            <aside class=notes>
+              <ul>
+                <li>This talk is for the intersection of these groups</li>
+                <li>...which so far seems like it might only be me</li>
+              </ul>
+            </aside>
+          </section>
+
+          <section data-transition=none>
+            <h3>(this is a selfish topic)</h3>
+
+            <aside class=notes>
+              <ul>
+                <li>
+                  So I do want to thank you for letting me hijack your nice
+                  tech talk for such a selfishly motivated topic.
+                </li>
+
+                <li>
+                  Thank you all for indulging me, my therapist says this is
+                  really good for my self esteem.
+                </li>
+              </ul>
+            </aside>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>Why care?</h2>
+
+            <ul>
+              <li class=fragment>Computing platforms point to an underlying narrative</li>
+              <li class=fragment>Platforms reflect the people building them</li>
+              <li class=fragment>New platforms don't come along very frequently</li>
+            </ul>
+
+            <aside class=notes>
+              <ul>
+                <li>I do want to share some of my motivation for this though</li>
+
+                <li>
+                  I do belive platforms like "Android", "iOS", "the web", .NET,
+                  Unity, etc have a huge impact on our lives.
+                </li>
+
+                <li>
+                  Platforms are evidence of a narrative -- some group won, some
+                  group lost, and we're subject to the priorities of the winners.
+                </li>
+
+                <li>
+                  Platforms are a reflection: software engineers are expensive
+                  &rarr; they buy nice phones &rarr; they tend to ignore the
+                  low-end device experience &rarr; the experience on low-end
+                  devices is endemically worse.
+                </li>
+
+                <li>
+                  New platforms don't happen often (especially if defined by a
+                  significant number of users). I believe they tend to correspond
+                  to big paradigm shifts.
+                </li>
+              </ul>
+            </aside>
+          </section>
+
+          <section data-transition=none>
+            <p>(I'm sorry for saying "paradigm shift")</p>
+
+            <aside class=notes>
+              <ul>
+                <li>CLI's came with mainframes</li>
+                <li>Mouse + keyboard happened with desktop PC's</li>
+                <li>Touch happened with mobile</li>
+                <li>
+                  Now we're seeing voice interfaces emerge
+
+                  <ul>
+                    <li>(So maybe there is an opportunity for Fuscia/Flutter)</li>
+                  </ul>
+                </li>
+              </ul>
+            </aside>
+          </section>
+
+          <section data-transition=none>
+            <h2>Why care?</h2>
+
+            <ul>
+              <li>Computing platforms point to an underlying narrative</li>
+              <li>Platforms reflect the people building them</li>
+              <li>New platforms don't come along very frequently</li>
+              <li class=fragment>Computing platforms <em>govern</em> significant parts of our lives</li>
+            </ul>
+
+            <aside class=notes>
+              <ul>
+                <li>Especialy as software engineers and content makers.</li>
+
+                <li>
+                  There was a time where you could publish an Android app, and
+                  the <code>targetApi</code> contract guaranteed it would keep
+                  working in future Android versions.
+                </li>
+
+                <li>That is effectively no longer true past a couple years.</li>
+
+                <li>
+                  Who made that decision? Was that made for the benefit of app
+                  developers? Users? Platform owners?
+                </li>
+
+                <li>
+                  There was a time when there were no technical limitations to
+                  downloading any content on the web.
+                </li>
+
+                <li>Now there is a standard process for locking that down</li>
+
+                <li>
+                  Once again, who made that decision? Was it for users? Content
+                  makers? Browser vendors?
+                </li>
+
+                <li>
+                  So I think these are important to understand the same way
+                  it's important to understand how your governement works.
+                </li>
+
+                <li>
+                  Going back to an earlier point, we should understand who is
+                  benefitting.
+                </li>
+              </ul>
+            </aside>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>
+              <span class=hi>Someone</span>
+              <small>is deciding how these platforms will work.</small>
+            </h2>
+
+            <aside class=notes>
+              <ul>
+                <li>The point of all this someone is deciding what matters in these platforms</li>
+                <li>And these decisions affect real people that we know</li>
+              </ul>
+            </aside>
+          </section>
+
+          <section data-background=img/uncle-sam-you.png data-background-color="#e7ad52">
+            <aside class=notes>
+              <ul>
+                <li>And step #1 is thinking about how high level aspects impact the platforms</li>
+                <li>And what ideas can you change or borrow to affect the platform</li>
+              </ul>
+            </aside>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>Similarities</h2>
+
+            <ul>
+              <li class=fragment>Both are concerned with reach</li>
+              <li class=fragment>Both are sanctimonious</li>
+            </ul>
+
+            <aside class=notes>
+              <ul>
+                <li>
+                  There's a lot we could say here, but we'll focus on
+                  similarities that don't hold in other big platforms.
+                </li>
+
+                <li>
+                  I think it's really cool how diverse these platforms are.
+                  THERE'S A LOT OF WORK TO BE DONE, but if you think about how
+                  each have enabled access for so many, I think it's something
+                  to take pride in.
+                </li>
+
+                <li>
+                  Related to that: both have this sanctimonious chip on their
+                  shoulder, and frequently seem to overstate their importance.
+                </li>
+
+                <li>
+                  The web talks about being this "open", democratizing force,
+                  when really we all know humanity's problems need something
+                  more than hyper text to fix.
+                </li>
+
+                <li>
+                  Similarly, has anyone heard Android people talk about "church
+                  and state"?
+                </li>
+              </ul>
+            </aside>
+          </section>
+
+          <section data-background=img/confused-nick-young.jpg>
+
+            <aside class=notes>
+              <ul>
+                <li>
+                  It's this idea that the money-making side of the
+                  organization's priorities are separate from Android's, making
+                  Android "the church".
+                </li>
+
+                <li>
+                  So what does that make them like Android priests or something?
+                </li>
+
+                <li>
+                  So both platforms have these aspects in common.
+                </li>
+              </ul>
+            </aside>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>Differences</h2>
+
+            <aside class=notes>
+              <ul>
+                <li>
+                  Let's focus on differences that point to discrepancies in
+                  high-level priorities.
+                </li>
+
+                <li>
+                  Based on that we'll get to the point of this talk: what each
+                  can learn from the other.
+                </li>
+              </ul>
+            </aside>
+          </section>
+
+          <section>
+            <h2>#1 Origins</h2>
+
+            <ul>
+              <li class=fragment>The web started as a way to share research</li>
+              <li class=fragment>Android started as a way to make better mobile software</li>
+            </ul>
+
+            <aside class=notes>
+              <ul>
+                <li>
+                  Sir Tim Berners Lee was working at CERN, a European nuclear
+                  research facility, and he invented the web for sharing
+                  research information.
+                </li>
+
+                <li>
+                  Andy Rubin talked about Android as a way to make smarter
+                  mobile devices.
+                </li>
+
+                <li>
+                  While people weren't using the word "apps" initially, it was
+                  definitely about expanding the possibilities of software
+                  applications, given a powerful device you carried everywhere
+                  with you.
+                </li>
+
+                <li>I think we still see echoes of these origins today.</li>
+
+                <li>Can anybody give examples?</li>
+
+                <li>Web search is still better than mobile app indexing</li>
+
+                <li>
+                  On the other hand, how many of us use a mobile web app for
+                  chat?
+                </li>
+              </ul>
+            </aside>
+          </section>
+
+          <section>
+            <h2>#2 What do we call content makers?</h2>
+
+            <ul>
+              <li class=fragment>
+                Each platform talks about content makers (newspapers, social
+                media influencers, Netflix, etc) by different (telling) names.
+              </li>
+
+              <li class=fragment>Web standards refer to them as "authors"</li>
+
+              <li class=fragment>Android docs refer to them as "publishers"</li>
+            </ul>
+
+            <aside class=notes>
+              <ul>
+                <li>
+                  What's the first thing that pops into your head when you hear
+                  these words?
+                </li>
+
+                <li>
+                  Authors: some person hunched over a typewriter, working on
+                  their next novel.
+                </li>
+
+                <li>Publishers: companies in Manhattan that pay the authors.</li>
+              </ul>
+            </aside>
+          </section>
+
+          <section data-background="img/publishers.gif">
+            <aside class=notes>
+              <ul>
+                <li>Basically what Buddy the Elf's dad does.</li>
+
+                <li>This speaks to each platforms target audience.</li>
+
+                <li>
+                  The web targets on a finer granularity, so you get a lower
+                  barrier to entry.
+                </li>
+
+                <li>
+                  Android is going after organizations with more resources, so
+                  it's not as easy to pick up, but you can make higher-fidelity
+                  user experiences.
+                </li>
+              </ul>
+            </aside>
+          </section>
+
+          <section>
+            <h2>#3 What's the authority?</h2>
+
+            <ul>
+              <li class=fragment>The web: DNS + CA</li>
+              <li class=fragment>Android: OEM + app store</li>
+            </ul>
+
+            <aside class=notes>
+              <ul>
+                <li>The web has very distributed and loose authority.</li>
+                <li>Android is defined by a much smaller set of players.</li>
+                <li>A general theme for platforms: the more centralized authority, the faster they evolve.</li>
+              </ul>
+            </aside>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>What can the web learn from Android?</h2>
+          </section>
+
+          <section>
+            <h2>#1 List views are the only layout that matters.</h2>
+
+            <aside class=notes>
+              <ul>
+                <li>
+                  It's the most important layout for mobile. For example,
+                  80% of the apps on my home screen start with a list view. How
+                  many on yours?
+                </li>
+
+                <li>
+                  Thing is, list views are hard. <a
+                    href="https://developer.android.com/guide/topics/ui/layout/recyclerview#structure">Android
+                    had to rewrite theirs</a>, but not before <a
+                  href="https://code.fb.com/android/fast-rendering-news-feed-on-android/">Facebook
+                  went to a ton of trouble authoring their own.</a>.
+                </li>
+
+                <li>
+                  Any viable mobile platform should make this easy on developers.
+                </li>
+
+                <li>
+                  The web actually has pretty advanced layout tools (CSS flex,
+                  grid), but there's still no standard way to do an efficient
+                  list view.
+                </li>
+              </ul>
+            </aside>
+          </section>
+
+          <section>
+            <h2>#2 You still need shared memory multi-threading.</h2>
+
+            <aside class=notes>
+              <ul>
+                <li>
+                  <a href="https://dassur.ma/things/when-workers/">Low-end devices are stuck in 2014</a>.
+                </li>
+
+                <li>
+                  But we keep writing software that expands to fill the
+                  resources of the phones at the top of the ever-widening
+                  performance gap (see <a
+                  href="https://httparchive.org/reports/page-weight">page
+                  weight over time</a>).
+                </li>
+
+                <li>
+                  As long as these are Von Neumann machines, the only viable
+                  option for things like declarative UI (React, etc), immutable
+                  data structures, realtime data, etc. is multi-threading that
+                  allows proper memory sharing (not just message passing).
+                </li>
+              </ul>
+            </aside>
+          </section>
+
+          <section>
+            <h2>#3 Battery matters.</h2>
+
+            <aside class=notes>
+              <ul>
+                <li>
+                  In the past, the web didn't drain battery because it didn't
+                  really do stuff in the background or work offline.
+                </li>
+
+                <li>
+                  As the web tries to make proper mobile apps (messaging
+                  apps, social media feeds, etc), it needs to get better at
+                  background and offline.
+                </li>
+
+                <li>
+                  Android not only has <code>WorkManager</code>, its
+                  3<sup>rd</sup> iteration of a battery-saving background
+                  scheduler, it's surfacing battery consumption to the user via
+                  settings and system tray notifications.
+                </li>
+
+                <li>
+                  The web isn't really having these discussions.
+                </li>
+              </ul>
+            </aside>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>What can Android learn from the web?</h2>
+          </section>
+
+          <section>
+            <h2>#1 Lower the barrier to entry.</h2>
+
+            <aside class=notes>
+              <ul>
+                <li>
+                  The ease of making a website is sometimes viewed
+                  pejoratively, but this makes the ecosystem more diverse!
+                </li>
+              </ul>
+            </aside>
+          </section>
+
+          <section>
+            <h2>#2 Deliver apps incrementally.</h2>
+
+            <aside class=notes>
+              <ul>
+                <li>Average web page is 10% average Android app.</li>
+
+                <li>
+                  Web has super flexible options for loading code
+                  incrementally, sharing code across domains, and caching
+                  subsets.
+                </li>
+
+                <li>
+                  Android app bundles seem to be the first "official" means for
+                  this. Advanced apps (i.e. Google Play services, Facebook,
+                  etc) have their own systems for this.
+                </li>
+
+                <li>
+                  Embedding webviews for shared logic is common (even in big
+                  apps!).
+                </li>
+
+                <li>
+                  Tooling is bad everywhere though. Hell is another platform's
+                  build system.
+                </li>
+              </ul>
+            </aside>
+          </section>
+
+          <section>
+            <h2>#3 Make it async, not concurrent.</h2>
+
+            <aside class=notes>
+              <ul>
+                <li>Concurrency is doing things at the same time.</li>
+                <li>Async is doing something (file I/O, network, etc) without blocking on the result.</li>
+                <li>Most of what apps do is I/O bound.</li>
+                <li>If you want a responsive app, you need to do I/O without blocking the main thread.</li>
+                <li>Android historically has reached for concurrency, the web for async.</li>
+                <li>Concurrency is more complicated though, and Android hasn't made it easy to do async-but-not-concurrent.</li>
+                <li>This is changing with Kotlin coroutines.</li>
+              </ul>
+            </aside>
+          </section>
+
+          <section>
+            <h2>#4 Experiment with DX more.</h2>
+
+            <aside class=notes>
+              <ul>
+                <li>The web re-invents the same wheels a lot.</li>
+                <li>This can be frustrating</li>
+                <li>But the web is really good at incubating developer experiences as a result.</li>
+                <li>
+                  It's so easy to deploy apps that you get shootouts like <a
+                    href="http://todomvc.com/">TodoMVC</a> and <a
+                    href="https://hnpwa.com">Hacker News PWA</a>, and <a
+                  href="https://jsperf.com">jsPerf</a>.
+                </li>
+                <li>A lot of DX ideas come from the web.</li>
+                <li>This is a product of so many differnt groups trying to do the same thing.</li>
+                <li>
+                  It can be overwhelming, but there's a reason <a
+                    href="https://developer.android.com/jetpack/compose">Android
+                    is implementing the web's UI approach</a> and not
+                  visa-versa.
+                </li>
+              </ul>
+            </aside>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>
+              The web and Android are the <span class=hi>best platforms
+              ever</span> <small style="vertical-align:baseline">(objectively)</small>
+            </h2>
+          </section>
+
+          <section>
+            <h2>There's still a lot they could learn from eachother.</h2>
+          </section>
+
+          <section>
+            <h2>Let's consider this and participate <span class=hi>actively</span> in these platforms.</h2>
+          </section>
+        </section>
+
+        <section>
+          <h1>Thanks!</h1>
+
+          <p style="text-align: right; margin-top: 8rem">
+            <a href="https://twitter.com/aaronj1335">@aaronj1335</a>
+            <br>
+            <a href="https://aaronstacy.com/the-web-and-android">aaronstacy.com/the-web-and-android</a>
+            <br>
+            <a href="https://github.com/aaronj1335/the-web-and-android/issues">Feedback welcome!</a>
+          </p>
+        </section>
+      </div>
+    </div>
+
+    <script src="js/reveal.js"></script>
+
+    <script>
+      Reveal.initialize({
+        hash: true,
+        dependencies: [
+          { src: 'plugin/markdown/marked.js' },
+          { src: 'plugin/markdown/markdown.js' },
+          { src: 'plugin/notes/notes.js', async: true },
+          { src: 'plugin/highlight/highlight.js', async: true }
+        ]
+      });
+    </script>
+  </body>
+</html>
